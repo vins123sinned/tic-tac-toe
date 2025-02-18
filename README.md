@@ -7,7 +7,7 @@ This project focuses mainly on the logical side of things, just like most games 
 ## Pseudocode
 Since tic-tac-toe is a game with rules and logic, pseudocode will come in handy for this project as writing out how the code will be layed out and written beforehand will save many hours of going back and fixing your code. By writing out how the code will be written through every step of the process, pseudocode eliminates any unnecessary codes and features which can bite you in the back if you ever come back to maintain it. I will begin this project by writing my pseudocode onto a paper or doc so that I can get an overview of what features/code goes where and how I can tackle the project as a whole. For a project as complicated and broad as tic-tac-toe, making pseudocode and design plans before diving into coding is the smart and **logical** thing to do.
 
-# Display/Styling
+## Display/Styling
 Only after I have made sure that the code runs perfectly in the JavaScript console will I begin to display it on the webpage with interactivity using the DOM methods and CSS tricks I have practiced many times before. This is the second half of the project and just as important as the logical side of things. The webpage is where the user interacts with the code and plays the game after all. For now, I will create a simple yet effective design for the game so that it is not only intuitive, but that it is also effective and bug-free.
 
 ## Conclusion
