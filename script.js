@@ -49,7 +49,43 @@ const gameBoard = (function() {
         if (board[row][column].checkTaken(token)) return true;
     }
 
-    return { getBoard, logBoard, setToken, checkCell };
+    const checkRow = (rowIndex, token) => {
+        const row = board[rowIndex];
+        for (let i = 0; i < rows; i++) {
+            if (row[i].getValue() !== token) return;
+        }
+        return true;
+    }
+
+    const checkColumn = (columnIndex, token) => {
+        for (let i = 0; i < columns; i++) {
+            if (board[i][columnIndex].getValue() !== token) return;
+        }
+        return true;
+    }
+
+    const checkDiagonal = (token) => {
+        if (board[0][0].getValue() === token && 
+            board[1][1].getValue() === token &&
+            board[2][2].getValue() === token) {
+            return true;
+        } else if (board[0][2].getValue() === token &&
+            board[1][1].getValue() === token &&
+            board[2][0].getValue() === token) {
+            return true;
+        }
+    }
+
+    const checkWin = (token) => {
+        // also check for ties later
+        for (let i = 0; i < rows; i++) {
+            if (checkRow(i, token)) return console.log(`Row win: ${token}`);
+            if (checkColumn(i, token)) return console.log(`Column win: ${token}`);
+        }
+        if (checkDiagonal(token)) return console.log(`Diagonal win: ${token}`);
+    }
+
+    return { getBoard, logBoard, setToken, checkCell, checkWin };
 })();
 
 const createPlayer = function(name, token) {
@@ -80,8 +116,11 @@ const gameController = (function() {
             return console.log('Cell is already taken!');
         }
         gameBoard.setToken(row, column, currentToken);
-        switchTurn();
         gameBoard.logBoard();
+        switchTurn();
+        //end game after win, and add function to 
+        gameBoard.checkWin(playerOne.getToken());
+        gameBoard.checkWin(playerTwo.getToken());
     }
 
     console.log('Let\'s play Tic, Tac, and Toe!')
